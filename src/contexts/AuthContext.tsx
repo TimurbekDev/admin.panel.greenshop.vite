@@ -6,20 +6,20 @@ export const AuthContext = createContext<IAuthContext>({
     setUser: () => null
 });
 
-const AuthContextProvider = ({ children } : { children : ReactNode}) => {
+const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
-    const [user , setUser ] = useState<object | null>(
+    const [user, setUser] = useState<object | null>(
         localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null
     );
 
-    useEffect(()=>{
-        if(user) localStorage.setItem('user',JSON.stringify(user))
-    });
+    useEffect(() => {
+        if (user) localStorage.setItem('user', JSON.stringify(user))
+    },[user]);
 
 
-  return <AuthContext.Provider value={{ user , setUser}}>
-    { children }
-  </AuthContext.Provider>
+    return <AuthContext.Provider value={{ user, setUser }}>
+        {children}
+    </AuthContext.Provider>
 }
 
 export default AuthContextProvider
