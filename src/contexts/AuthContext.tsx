@@ -13,7 +13,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     );
 
     useEffect(() => {
-        if (user) localStorage.setItem('user', JSON.stringify(user))
+       localStorage.setItem('user', JSON.stringify(user))
     },[user]);
 
 
